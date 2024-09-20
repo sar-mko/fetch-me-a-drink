@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+/*shared tyles*/
+.flex{
+    display: flex;
+}
+.sawarabi-mincho-regular {
+    font-family: "Sawarabi Mincho", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .figtree-reg {
+    font-family: "Figtree", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+  }
+body{
+    /* align-items: space-evenly;
+    justify-content: center; */
+    min-height: 100vh;
+    color: #fed344b5;
+
+    flex-direction: row;
+}
+nav{
+    flex-direction: row;
+    justify-content: space-between;
+}
+#img{
+    background-color: #FED344;
+}
+#img img{
+    max-width: 100%;
+    display: block;
+}
+#content{
+    background-color: #435644;
+    /* padding: 1em;
+    flex-direction: column; */
+    flex-direction: column;
+    padding: 0 3em;
+
+}
+.main-containers{
+    
+    /* flex: 1;
+    width: 100%; */
+}
+nav, footer{
+    padding: 4em 0;
+}
+/* padding: 4em 0; */
+.con-section{
+    /* justify-content: space-evenly; */
+    column-gap: 8em;
+    padding: 2em 0;
+}
+#content-top{
+    justify-content: space-between;
+    border-bottom: 1px solid #FED344;
+
+}
+#content-bottom{
+
+    column-gap: 8em;
+
+}
+#content-bottom li{
+   
+}
+footer{
+    justify-content: space-between;
+}
+
+/*styling*/
+h1, h2, h4{
+        color: #FED344;
+}
+h1{
+    font-size: 5em;
+}
+h4{
+    font-size: 1.5em;
+}
+/* h5{
+    font-weight: 300;
+}
+h5 + span{
+    font-size: .8em;
+} */
+input{
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #FED344;
+    color: #859186;
+    padding-bottom: .2em;
+}
+button{
+    padding: .7em 1.8em;
+    border-radius: 3em;
+    border: 0;
+}
+.short-text { display: none; }
+.light-btn{
+    color: #435644;
+    background-color: #FED344;
+}
+.dark-btn{
+    color: #FED344;
+    background-color: #435644;
+    border: 1px solid #FED344;
+}
+#content-bottom h2{
+    padding-bottom: .5em;
+}
+ul{
+    line-height: 1.5em;
+}
+ul li span{
+    padding-right: .3em;
+}
+.fa-martini-glass-citrus{
+    font-size: 1.4em;
+}
+/* responsiveness */
+@media (max-width: 850px) {
+    body {
+      flex-direction: column;
+    }
+}
+@media (max-width: 620px) {
+    nav{
+        flex-direction: column;
+    }
+    nav div{
+        padding-top: 2em;
+    }
+    .short-text { display: inline-block; }
+    .full-text { display: none; }
+}
+
+@media (max-width: 590px) {
+    .con-section {
+        flex-direction: column;
+        gap: 2em 0;
+      }
+}
+@media (max-width: 345px) {
+    .con-section {
+      flex-direction: column;
+    }
+  }
