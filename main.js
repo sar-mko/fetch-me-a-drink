@@ -4,6 +4,7 @@ const drinkCategory = document.querySelector('#drinkCategory')
 const drinkGlassWare = document.querySelector('#drinkGlassware')
 const drinkType = document.querySelector('#drinkType')
 const drinkInstructions = document.querySelector('#drinkInstructions')
+const drinkIngredients = document.querySelector('#drinkIngredients')
 
 async function getByName(e){
     try{
@@ -18,6 +19,15 @@ async function getByName(e){
         drinkType.innerHTML = firstDrink.strAlcoholic
         drinkGlassWare.innerHTML = firstDrink.strGlass
         drinkInstructions.innerHTML = firstDrink.strInstructions
+        drinkIngredients.innerHTML = ''
+
+        let num = 1
+        while(firstDrink[`strIngredient${num}`] !== null){
+            console.log(firstDrink[`strIngredient${num}`])
+            const ingredient = document.createElement('li')
+            drinkIngredients.append(firstDrink[`strIngredient${num}`], ingredient)
+            num++
+        }
     }
    catch(err){
     console.log(`Error: ${err}`)
