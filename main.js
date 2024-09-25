@@ -3,6 +3,7 @@ const drinkName = document.querySelector('.drinkName')
 const drinkCategory = document.querySelector('#drinkCategory')
 const drinkGlassWare = document.querySelector('#drinkGlassware')
 const drinkType = document.querySelector('#drinkType')
+const drinkInstructions = document.querySelector('#drinkInstructions')
 
 async function getByName(e){
     try{
@@ -16,6 +17,7 @@ async function getByName(e){
         drinkCategory.innerHTML = firstDrink.strCategory
         drinkType.innerHTML = firstDrink.strAlcoholic
         drinkGlassWare.innerHTML = firstDrink.strGlass
+        drinkInstructions.innerHTML = firstDrink.strInstructions
     }
    catch(err){
     console.log(`Error: ${err}`)
