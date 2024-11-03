@@ -1,6 +1,6 @@
 const buttonsDivs = document.querySelector('.button-listen').addEventListener('click', getByName )
 const randomBtn = document.querySelector('.btn-random').addEventListener('click', getRandom)
-const leftBtn = document.querySelector('.left-btn').addEventListener('click', getList)
+const leftBtn = document.querySelector('.left-btn').addEventListener('click', goLeft)
 const rightBtn = document.querySelector('.right-btn').addEventListener('click', goRight)
 const drinkName = document.querySelector('.drinkName')
 const drinkCategory = document.querySelector('#drinkCategory')
@@ -48,17 +48,52 @@ async function getRandom(){
     }
 }
 
-async function getList(){
+async function goLeft(){
     //change to goLeft
     try{
         // if already a selected drink(ex. we clicked random and the drink in front is martini, start searching from the m drink list)
         //if no drink selected, start from A
         // and once a is done, got to b? or just recycle the list of A
         
-        const res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${currentDrink[0]}`)
-        const data = await res.json()
-        console.log(data.drinks[0])
-        console.log(data)
+        let data = null
+        if(!currentDrink){
+            const res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a`)
+            data = await res.json()
+            getStoreList(data,0)
+        }else if(rotatingList.length === 1){
+            const res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${currentDrink[0]}`)
+            data = await res.json()
+            getStoreList(data,0)
+        }else if(currentIndex == 0){
+           console.log( 'HERRRR', currentIndex)
+            currentIndex = rotatingList.drinks.length - 1
+        }else{
+            console.log('nooooooo')
+            currentIndex--
+        }
+        console.log('LENGTH!', rotatingList, 'len',rotatingList.drinks.length,'currI',currentIndex )
+        // const firstDrink = data.drinks[0]
+        // currentDrink = firstDrink.strDrink
+        // rotatingList = data
+        // listIndex = 0
+
+        populateScreen(rotatingList, currentIndex)
+        // console.log(data.drinks[0].strDrink[0])
+        // const newList = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${data.drinks[0].strDrink[0]}`)
+        // console.log(data.drinks[0])
+        // console.log(data)
+        /**
+         * if list is only one item, do goRandom() request (or alert first who cares)
+         * 
+         * if at the end of the list, go to list[0]
+         * 
+         * else go to the next i + 1
+         * (so do i store the index its at?)
+         * 
+         * if 
+         *
+         * 
+         */
 
     }catch(err){
         console.log(err)
@@ -81,10 +116,14 @@ async function goRight(){
             const res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${currentDrink[0]}`)
             data = await res.json()
             getStoreList(data,0)
+        }else if(currentIndex >= rotatingList.drinks.length - 1){
+           console.log( 'HERRRR', currentIndex)
+            currentIndex = 0
         }else{
+            console.log('nooooooo')
             currentIndex++
         }
-        console.log('LENGTH!', rotatingList, rotatingList.length )
+        console.log('LENGTH!', rotatingList, 'len',rotatingList.drinks.length,'currI',currentIndex )
         // const firstDrink = data.drinks[0]
         // currentDrink = firstDrink.strDrink
         // rotatingList = data
