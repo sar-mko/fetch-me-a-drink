@@ -1,7 +1,7 @@
-const buttonsDivs = document.querySelector('.button-listen').addEventListener('click', getByName )
+const searchBtn = document.querySelectorAll('.search-btn')
 const randomBtn = document.querySelector('.btn-random').addEventListener('click', getRandom)
-const leftBtn = document.querySelector('.left-btn').addEventListener('click', function() { rotate('left'); })
-const rightBtn = document.querySelector('.right-btn').addEventListener('click', function() { rotate('right'); } )
+const leftBtn = document.querySelectorAll('.left-btn')
+const rightBtn = document.querySelectorAll('.right-btn')
 const drinkName = document.querySelector('.drinkName')
 const drinkCategory = document.querySelector('#drinkCategory')
 const drinkGlassWare = document.querySelector('#drinkGlassware')
@@ -12,6 +12,10 @@ const drinkImg = document.querySelector('#img img')
 let currentDrink = ''
 let rotatingList = {}
 let listIndex = null
+
+searchBtn.forEach(btn => btn.addEventListener('click', getByName ))
+leftBtn.forEach(btn => btn.addEventListener('click', function() { rotate('left'); }))
+rightBtn.forEach(btn => btn.addEventListener('click', function() { rotate('right'); }))
 
 async function getByName(e){
     try{
